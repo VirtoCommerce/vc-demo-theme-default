@@ -11,14 +11,6 @@ on:
     branches: [ dev ]
 
 jobs:
-  cancel-previous-runs:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: n1hility/cancel-previous-runs@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        workflow: synced-main.yml
-
   build-package:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
