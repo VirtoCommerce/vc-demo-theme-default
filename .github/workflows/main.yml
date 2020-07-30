@@ -1,10 +1,10 @@
 name: CI
 on:
-  # workflow_dispatch:
-  #   inputs:
-  #     versionTag:
-  #       description: 'Image version tag'
-  #       required: true
+  workflow_dispatch:
+    inputs:
+      versionTag:
+        description: 'Image version tag'
+        required: true
   push:
     branches: [ vp-3809 ]
   pull_request:
