@@ -1,13 +1,13 @@
 var storefrontApp = angular.module('storefrontApp');
 
 storefrontApp.controller('recommendationsController', ['$scope', '$timeout', 'recommendationService', function ($scope, $timeout, recommendationService) {
-   
+
     $scope.isBlockVisible = false;
     $scope.productListRecommendationsLoaded = false;
     $scope.productListRecommendations = [];
-   
+
     $scope.getRecommendations = function (evalContext) {
-     
+
         if (_.isString(evalContext.productIds)) {
             if (evalContext.productIds.match(",")) {
                 var values = evalContext.productIds.split(',');
@@ -23,11 +23,11 @@ storefrontApp.controller('recommendationsController', ['$scope', '$timeout', 're
                 for (var i = 0; i < products.length; i++) {
                     $scope.productListRecommendations.push(products[i]);
                 }
-
+                $scope.initCarousel(products.length);
                 $scope.isBlockVisible = products.length > 0;
             }
 
-            $scope.productListRecommendationsLoaded = true;            
+            $scope.productListRecommendationsLoaded = true;
         });
     }
     $scope.startRecordInteraction = function () {
@@ -36,4 +36,41 @@ storefrontApp.controller('recommendationsController', ['$scope', '$timeout', 're
            window.startRecordInteraction();
         });
     }
+
+    $scope.initCarousel = function (itemsLength) {
+        $timeout(function () {
+            $scope.$carousel = $(".owl-carousel").owlCarousel({
+            margin:30,
+            nav:true,
+            dots: false,
+            navText:["<div class='nav-arrow nav-arrow-left'></div>","<div class='nav-arrow nav-arrow-right'></div>"],
+            responsive:{
+                0:{
+                    items:2,
+                    loop: itemsLength > 2
+                },
+                768:{
+                    items:3,
+                    loop: itemsLength > 3
+                },
+                992:{
+                    items:5,
+                    loop: itemsLength > 5
+                }
+            }
+            });
+         }, 1000);
+    }
+
+    $scope.$on('productVariationChanged', function (event, data) {
+        $scope.isBlockVisible = false;
+        $scope.productListRecommendationsLoaded = false;
+        $scope.productListRecommendations = [];
+        $scope.getRecommendations({ provider : 'DynamicAssociations' , productIds : data });
+    });
+
+    $scope.truncate = function(str, n) {
+        return (str.length > n) ? str.substr(0, n-1) + '…' : str;
+    };
+
 }]);

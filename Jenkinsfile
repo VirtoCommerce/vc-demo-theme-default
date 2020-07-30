@@ -1,4 +1,0 @@
-#!groovy
-virtoTheme {
-    sampleStore = "Electronics"
-}

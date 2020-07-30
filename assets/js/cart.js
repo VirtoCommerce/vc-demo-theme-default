@@ -58,7 +58,7 @@ storefrontApp.controller('cartController', ['$rootScope', '$scope', '$timeout', 
             $scope.cart.items = initialItems;
             $scope.cartIsUpdating = false;
         });
-    }   
+    }
 
     $scope.submitCart = function () {
         $scope.formCart.$setSubmitted();
@@ -138,7 +138,9 @@ storefrontApp.controller('cartBarController', ['$scope', 'cartService', function
     }
 }]);
 
-storefrontApp.controller('recentlyAddedCartItemDialogController', ['$scope', '$window', '$uibModalInstance', 'dialogData', function ($scope, $window, $uibModalInstance, dialogData) {
+storefrontApp.controller('recentlyAddedCartItemDialogController', ['$scope', '$window', '$uibModalInstance', 'dialogData','recommendationService','$timeout', function ($scope, $window, $uibModalInstance, dialogData, recommendationService, $timeout) {
+    getRecommendations();
+
     $scope.$on('cartItemsChanged', function (event, data) {
         dialogData.updated = true;
     });
@@ -151,5 +153,46 @@ storefrontApp.controller('recentlyAddedCartItemDialogController', ['$scope', '$w
 
     $scope.redirect = function (url) {
         $window.location = url;
+    }
+
+    $scope.initCarousel = function (itemsLength) {
+        $timeout(function () {
+            $scope.$carousel = $(".owl-carousel").owlCarousel({
+            margin:30,
+            nav:true,
+            dots: false,
+            navText:["<div class='nav-arrow nav-arrow-left'></div>","<div class='nav-arrow nav-arrow-right'></div>"],
+            responsive:{
+                0:{
+                    items:2,
+                    loop: itemsLength > 2
+                },
+                768:{
+                    items:3,
+                    loop: itemsLength > 3
+                },
+                992:{
+                    items:5,
+                    loop: itemsLength > 5
+                }
+            }
+            });
+         }, 1000);
+    }
+
+    $scope.truncate = function(str, n) {
+        return (str.length > n) ? str.substr(0, n-1) + '…' : str;
+    };
+
+    function getRecommendations() {
+        recommendationService.getRecommendedProducts({ provider : 'DynamicAssociations' , productIds : [dialogData.id] }).then(function (response) {
+            var products = response.data;
+            if (products.length) {
+                $scope.productListRecommendations = products;
+                $scope.initCarousel(products.length);
+                $scope.isBlockVisible = products.length > 0;
+            }
+            $scope.productListRecommendationsLoaded = true;
+        });
     }
 }]);
