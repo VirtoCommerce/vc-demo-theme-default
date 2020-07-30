@@ -45,7 +45,7 @@ jobs:
     #   id: image
 
     - name: Get Image Version
-      uses: VirtoCommerce/vc-github-actions/get-image-version@v3
+      uses: VirtoCommerce/vc-github-actions/get-image-version@dev
       id: image
 
     - name: Npm Install
@@ -103,4 +103,4 @@ jobs:
 
       - name: Set Build status Failed
         if: failure()
-        run: echo "::set-env name=BUILD_STATE::failed"     
+        run: echo "::set-env name=BUILD_STATE::failed"
