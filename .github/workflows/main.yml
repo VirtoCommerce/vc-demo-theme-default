@@ -14,9 +14,6 @@ jobs:
     outputs:
         path: ${{ steps.artifact-path.outputs.path }}
         name: ${{ steps.artifact-path.outputs.name }}
-        # theme: ${{ steps.image.outputs.moduleId }}
-        # tag: ${{ steps.image.outputs.tag }}
-        # sha: ${{ steps.image.outputs.sha }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -27,10 +24,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: '10.x'
-
-    # - name: Get Image Tag
-    #   uses: VirtoCommerce/vc-github-actions/get-image-tag@v3
-    #   id: image
 
     - name: Get Image Version
       uses: VirtoCommerce/vc-github-actions/get-image-version@dev
@@ -69,14 +62,6 @@ jobs:
           name: ${{needs.build-package.outputs.name}}
           # Destination path
           path: ${{needs.build-package.outputs.path}}
-
-      # - name: Set artifact name
-      #   shell: pwsh
-      #   id: artifact
-      #   run: |
-      #     Get-ChildItem ${{needs.build-package.outputs.path}} | ForEach-Object {
-      #       Rename-Item $_ -NewName ${{needs.build-package.outputs.moduleId}}_${{needs.build-package.outputs.tag}}.zip
-      #     }
 
       - name: Upload a Build Artifact to Azure Blob Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
