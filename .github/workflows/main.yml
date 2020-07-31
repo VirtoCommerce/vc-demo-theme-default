@@ -2,7 +2,7 @@ name: CI
 on:
   workflow_dispatch:
   push:
-    branches: [ dev ]
+    branches: [ dev, vp-3809 ]
   pull_request:
     branches: [ dev ]
 
@@ -28,7 +28,7 @@ jobs:
     - name: Get Image Version
       uses: VirtoCommerce/vc-github-actions/get-image-version@dev
       id: image
-    
+
       # After anp install 'bower install' cmd will be invoked as package.json script
     - name: Npm Install
       run: npm install
@@ -63,6 +63,14 @@ jobs:
           name: ${{needs.build-package.outputs.name}}
           # Destination path
           path: ${{needs.build-package.outputs.path}}
+
+      - name: Set artifact name
+        shell: pwsh
+        id: artifact
+        run: |
+          Get-ChildItem ${{needs.build-package.outputs.path}} | ForEach-Object {
+            Rename-Item $_ -NewName ${{needs.build-package.outputs.name}}.zip
+          }
 
       - name: Upload a Build Artifact to Azure Blob Storage
         uses: bacongobbler/azure-blob-storage-upload@v1.1.1
