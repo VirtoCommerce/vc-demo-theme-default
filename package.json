@@ -1,6 +1,6 @@
 {
-    "version": "2.1.10",
-    "name": "vc-theme-default",
+    "version": "1.0.0",
+    "name": "vc-demo-theme-default",
     "author": "VirtoCommerce",
     "description": "Default theme for Storefront",
     "private": true,
