@@ -39,6 +39,10 @@ jobs:
       uses: VirtoCommerce/vc-github-actions/get-image-version@dev
       id: image
 
+    - name: Get changelog
+      id: changelog
+      uses: VirtoCommerce/vc-github-actions/changelog-generator@master
+
     - name: SonarCloud Scan
       uses: VirtoCommerce/vc-github-actions/sonar-theme@dev
 
@@ -58,6 +62,7 @@ jobs:
         release_name: ${{ steps.image.outputs.tag }}
         draft: false
         prerelease: false
+        body: ${{ steps.changelog.outputs.changelog }}
 
     - name: Upload Release Asset
       if: github.ref == 'refs/heads/master'
