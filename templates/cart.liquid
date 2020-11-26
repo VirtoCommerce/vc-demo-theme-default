@@ -114,7 +114,7 @@
                 </div>
             </div>
         </form>
-        {% if current_cart %}
+        {% if current_cart.value.items and current_cart.value.items.size > 0 %}
             {% assign product_ids = "" %}
             {% for line in current_cart.value.items %}
                 {% assign product_ids = product_ids | append line.product_id | append ',' %}
