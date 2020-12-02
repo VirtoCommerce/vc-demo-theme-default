@@ -114,7 +114,7 @@
     <hr class="hr--small">
 
     <div class="grid">
-      <div class="grid-item{% unless shop.enabled_payment_types == empty %} large--two-fifths{% endunless %}">
+      <div class="grid-item">
         {% if settings.footer_legallinks_enable %}
           <ul class="legal-links inline-list">
             {% for link in linklists[settings.footer_legallinks_linklist].links %}
@@ -127,25 +127,10 @@
             &copy; {{ 'now' | date: "yyyy" }} {{ shop.name }}
           </li>
           <li>
-              {{ powered_by shop.name }}
+              {{ powered_by }}
           </li>
         </ul>
       </div>
-
-      {% unless shop.enabled_payment_types == empty %}
-        <div class="grid-item large--three-fifths large--text-right">
-          <ul class="inline-list payment-icons">
-            {% for type in shop.enabled_payment_types %}
-              <li>
-                <span class="icon-fallback-text">
-                  <span class="icon icon-{{ type }}" aria-hidden="true"></span>
-                  <span class="fallback-text">{{ type | replace: '_',' ' }}</span>
-                </span>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
-      {% endunless %}
 
     </div>
 
