@@ -149,7 +149,7 @@ angular.module(moduleName, ['credit-cards', 'angular.filter'])
             }
 
             function updateShipmentWithoutReloadCart(shipment) {
-                return updateShipmentAndReloadCart(shipment, false)
+                return updateShipmentAndReloadCart(shipment, false);
             }
 
             function updateShipmentAndReloadCart(shipment, reloadCart) {
@@ -174,7 +174,7 @@ angular.module(moduleName, ['credit-cards', 'angular.filter'])
 
             $scope.createOrder = function() {
                 updatePaymentWithoutReloadCart($scope.checkout.payment).then(function() {
-                    updateShipmentWithoutReloadCart($scope.checkout.shipment, false).then(function() {
+                    updateShipmentWithoutReloadCart($scope.checkout.shipment).then(function() {
                         $scope.checkout.loading = true;
                         cartService.createOrder($scope.checkout.paymentMethod.card || []).then(function(response) {
                             var order = response.data.order;
