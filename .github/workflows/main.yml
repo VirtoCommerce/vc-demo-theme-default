@@ -89,11 +89,4 @@ jobs:
         asset_path: ${{ steps.publish.outputs.artifactPath }}
         asset_name: ${{ steps.publish.outputs.artifactName }}
         asset_content_type: application/zip
-
-    - name: Invoke Theme deployment workflow
-      if: ${{(github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/master')}}
-      uses: benc-uk/workflow-dispatch@v1
-      with:
-        workflow: Theme deployment
-        token: ${{ secrets.REPO_TOKEN }}
-        inputs: '{ "blobUrl": "${{ steps.publish.outputs.blobUrl }}", "artifactVersion": "${{ steps.image.outputs.fullVersion }}", "key": "ELECTRONICS_THEME_URL" }'
+        
