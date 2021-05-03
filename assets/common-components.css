@@ -528,12 +528,10 @@ select {
     width: 16px;
     height: 16px;
     top: 15px;
-}
-
-.icon--question {
     background-image: url('question-dark.svg');
     background-image: url('question-dark.svg'), none;
 }
+
 /*.main
 .sidebar .icon--question {
     background-image: url('question-dark.svg');
