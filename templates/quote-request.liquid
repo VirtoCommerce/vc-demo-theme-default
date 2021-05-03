@@ -41,7 +41,7 @@
         </div>
         <div class="grid" ng-if="displayForStatuses(['Processing', 'Proposal sent', 'Ordered', 'Rejected', 'Canceled'])">
             <div class="grid-item medium-down--one-whole">
-                <table>
+                <table aria-hidden="true">
                     <tr>
                         <td><strong>{{ 'quotes.request.email' | t }}</strong></td>
                         <td ng-bind="quoteRequest.email"></td>
@@ -78,7 +78,7 @@
                             <span class="cart-image">
                                 <img alt="quoteItem.name" ng-src="{% raw %}{{ quoteItem.imageUrl }}{% endraw %}" title="quoteItem.name" ng-if="quoteItem.imageUrl" />
                                 <div class="no-product-image" ng-if="!quoteItem.imageUrl">
-                                    <img src="{{ 'images/no-image.svg' | asset_url }}" />
+                                    <img src="{{ 'images/no-image.svg' | asset_url }}" alt="no image" />
                                 </div>
                             </span>
                         </div>
