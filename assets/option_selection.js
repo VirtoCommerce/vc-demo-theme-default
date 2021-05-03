@@ -71,7 +71,7 @@ Shopify.Product = function(json) {
 };
 
 Shopify.Product.prototype.update = function(json) {
-  for (property in json) {
+  for (let property in json) {
     this[property] = json[property];
   }
 };
@@ -151,8 +151,8 @@ Shopify.formatMoney = function(cents, format) {
 
     number = (number/100.0).toFixed(precision);
 
-    var parts   = number.split('.'),
-        dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands),
+    var parts   = number.split('.');
+        dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands);
         cents   = parts[1] ? (decimal + parts[1]) : '';
 
     return dollars + cents;
@@ -180,7 +180,7 @@ function floatToString(numeric, decimals) {
   var amount = numeric.toFixed(decimals).toString();
   if(amount.match(/^\.\d+/)) {return "0"+amount; }
   else { return amount; }
-};
+}
 // ---------------------------------------------------------------------------
 // OptionSelectors(domid, options)
 //
@@ -387,18 +387,17 @@ Shopify.extend(Shopify.OptionSelectorsFromDOM, Shopify.OptionSelectors);
 
 // updates the product_json from existing select element
 Shopify.OptionSelectorsFromDOM.prototype.createProductFromSelector = function(domId, optionNames, priceFieldExists, delimiter) {
-  if (!Shopify.isDefined(priceFieldExists)) { var priceFieldExists = true; }
-  if (!Shopify.isDefined(delimiter)) { var delimiter = '/'; }
+  if (!Shopify.isDefined(priceFieldExists)) { priceFieldExists = true; }
+  if (!Shopify.isDefined(delimiter)) { delimiter = '/'; }
 
   var oldSelector = document.getElementById(domId);
   var options = oldSelector.childNodes;
-  var parent = oldSelector.parentNode;
 
   var optionCount = optionNames.length;
 
   // build product json + messages array
   var variants = [];
-  var self = this;
+
   Shopify.each(options, function(option, variantIndex) {
     if (option.nodeType == 1 && option.tagName.toLowerCase() == 'option') {
       var chunks = option.innerHTML.split(new RegExp('\\s*\\'+ delimiter +'\\s*'));
@@ -409,7 +408,6 @@ Shopify.OptionSelectorsFromDOM.prototype.createProductFromSelector = function(do
 
       var optionOptionValues = chunks.slice(0, optionCount);
       var message = (priceFieldExists ? chunks[optionCount] : '');
-      var variantId = option.getAttribute('value');
 
       var attributes = {
         available: (option.disabled ? false : true),
