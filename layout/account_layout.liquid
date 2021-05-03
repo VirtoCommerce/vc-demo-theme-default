@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-touch no-js" ng-app="storefrontApp" ng-controller="mainController">
+<html class="no-touch no-js" ng-app="storefrontApp" ng-controller="mainController" lang="en">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
@@ -22,7 +22,7 @@
 
     {{ '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css' | stylesheet_tag }}
     <!--{{ '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css' | stylesheet_tag }}-->
-    
+
     {{ 'bundle/account-styles.css' | static_asset_url | append_version | stylesheet_tag }}
 
      {{ 'ajaxify.scss.css' | asset_url | stylesheet_tag }}
@@ -32,7 +32,7 @@
 
     <base href="{{ '/' | absolute_url }}" />
 
-    {{ 'bundle/scripts_dependencies.js' | static_asset_url | append_version | script_tag }} 
+    {{ 'bundle/scripts_dependencies.js' | static_asset_url | append_version | script_tag }}
     {{ 'bundle/account-scripts.js' | static_asset_url | append_version | script_tag }}
 
 	{{ 'shop.js' | asset_url | script_tag }}
@@ -76,12 +76,12 @@
                             {% endif %}
                 </div>
             <div class="grid-item large--two-third text-center large--text-right">
-                
+
                 <div class="site-header--text-links{% if settings.header_message.empty? == false %} medium-down--hide{% endif %}">
                     {% if settings.header_message.empty? == false %}
                     {{ settings.header_message }}
                     {% endif %}
-                    
+
                     <span class="site-header--meta-links medium-down--hide">
                         <span ng-if="customer && customer.isRegisteredUser && customer.operatorUserName" ng-cloak>
                             {{ 'layout.customer.logged_in_on_behalf_of_label' | t }} <a href="{{ 'account' | absolute_url }}" ng-bind="customer.firstName || customer.userName"></a> &middot; {{ 'layout.customer.log_out' | t | customer_logout_link }}
@@ -98,7 +98,7 @@
 
                 </div>
                 <br class="medium-down--hide" />
-                
+
                 {% include 'search-bar' %}
                 {% if settings.product_compare_enabled %}
                     <product-compare-list-bar></product-compare-list-bar>
