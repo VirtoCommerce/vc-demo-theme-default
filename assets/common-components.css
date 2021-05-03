@@ -960,7 +960,8 @@ select {
 
 .list-table {
     border-collapse: separate !important;
-    /*border-spacing: 10pt !important;*/
+    position: relative;
+    top: -40px;
 }
 
 .vc-product-table tr {
@@ -1039,11 +1040,6 @@ select {
     color: #969696;
     font-size: 12px;
     text-decoration: line-through;
-}
-
-.list-table {
-    position: relative;
-    top: -40px;
 }
 
 .has-error {
