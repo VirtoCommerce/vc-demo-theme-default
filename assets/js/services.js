@@ -77,7 +77,7 @@ storefrontApp.service('compareProductService', ['$http', '$localStorage', functi
                 return;
             }
             var ids = [];
-            for (i = 0; i < $localStorage['productCompareListIds'].length; i++) {
+            for (let i = 0; i < $localStorage['productCompareListIds'].length; i++) {
                 ids.push('productIds=' + $localStorage['productCompareListIds'][i]);
             }
             return ids.join("&");
@@ -144,7 +144,7 @@ storefrontApp.service('cartService', ['$http', function ($http) {
         addCoupon: function (couponCode) {
             return $http.post('storefrontapi/cart/coupons/' + couponCode);
         },
-        removeCoupon: function (couponCode) {            
+        removeCoupon: function (couponCode) {
             return $http.delete('storefrontapi/cart/coupons?couponCode=' + couponCode);
         },
         validateCoupon: function (coupon) {
