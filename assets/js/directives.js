@@ -28,7 +28,7 @@ storefrontApp.directive('fallbackSrc', function () {
                 else {
                     element.off(event);
                 }
-            };
+            }
         }
     }
 });
