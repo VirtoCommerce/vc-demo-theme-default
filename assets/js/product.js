@@ -81,7 +81,7 @@ storefrontApp.controller('productController', ['$rootScope', '$scope', '$window'
                     });
                });
 
-                
+
                 var propertyMap = getVariationPropertyMap(product);
                 var key = _.first(_.keys(propertyMap));
                 if (key){
@@ -131,7 +131,7 @@ storefrontApp.controller('productController', ['$rootScope', '$scope', '$window'
                 }
                 return result;
             });
-        }   
+        }
 
         function findVariationByProperties(variations, selectedPropMap) {
             return _.find(variations, function (x) {
@@ -189,7 +189,7 @@ storefrontApp.controller('productController', ['$rootScope', '$scope', '$window'
         }, function(newValue, oldValue) {
          if (newValue === oldValue || oldValue === undefined) {
              return;
-           };
+           }
            $rootScope.$broadcast('productVariationChanged',$scope.selectedVariation.id);
         });
 
