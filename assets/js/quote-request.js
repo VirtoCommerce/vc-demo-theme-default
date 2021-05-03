@@ -161,8 +161,8 @@ storefrontApp.controller('quoteRequestController', ['$rootScope', '$scope', '$wi
 
     $scope.rejectQuoteRequest = function () {
         quoteRequestService.rejectQuoteRequest($scope.quoteRequest.id).then(function (response) {
-            quoteRequestService.getQuoteRequest($scope.quoteRequest.id).then(function (response) {
-                $scope.quoteRequest = response.data;
+            quoteRequestService.getQuoteRequest($scope.quoteRequest.id).then(function (quoteResponse) {
+                $scope.quoteRequest = quoteResponse.data;
             });
         });
     }
