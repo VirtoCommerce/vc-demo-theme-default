@@ -116,7 +116,7 @@ function min_html(){
             )
             .pipe(dest("."));
     });
-   
+
     return merge2(tasks);
 }
 
@@ -167,7 +167,7 @@ function lint(){
 }
 
 function compress(){
-    var package = getPackage();
+    var customPackage = getPackage();
     return merge2(
             src(
                 [].concat(
@@ -190,7 +190,7 @@ function compress(){
                 path.dirname = "default/" + path.dirname;
             })
         )
-        .pipe(zip(package.name + "-" + package.version + ".zip"))
+        .pipe(zip(customPackage.name + "-" + customPackage.version + ".zip"))
         .pipe(dest("artifacts"));
 }
 
