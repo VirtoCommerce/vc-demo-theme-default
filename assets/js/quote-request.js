@@ -77,18 +77,25 @@ storefrontApp.controller('quoteRequestController', ['$rootScope', '$scope', '$wi
     }
 
     $scope.setCountryRegion = function (addressType) {
+        var countryRegion;
+
         if (addressType == 'Billing') {
-            var countryRegion = _.find($scope.billingCountryRegions, function (r) { return r.name == $scope.quoteRequest.billingAddress.regionName });
+            countryRegion = _.find($scope.billingCountryRegions, function (r) { return r.name == $scope.quoteRequest.billingAddress.regionName });
+
             if (!countryRegion) {
                 return;
             }
+
             $scope.quoteRequest.billingAddress.regionId = countryRegion.code;
         }
+
         if (addressType == 'Shipping') {
-            var countryRegion = _.find($scope.shippingCountryRegions, function (r) { return r.name == $scope.quoteRequest.shippingAddress.regionName });
+            countryRegion = _.find($scope.shippingCountryRegions, function (r) { return r.name == $scope.quoteRequest.shippingAddress.regionName });
+
             if (!countryRegion) {
                 return;
             }
+
             $scope.quoteRequest.shippingAddress.regionId = countryRegion.code;
         }
     }
