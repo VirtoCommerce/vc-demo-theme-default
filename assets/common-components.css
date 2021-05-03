@@ -534,7 +534,7 @@ select {
     background-image: url('question-dark.svg');
     background-image: url('question-dark.svg'), none;
 }
-/*.main 
+/*.main
 .sidebar .icon--question {
     background-image: url('question-dark.svg');
     background-image: url('question-dark.svg'), none
@@ -917,7 +917,7 @@ select {
     margin-bottom: 0px;
     line-height: 1.6;
     z-index: 999;
-    font-family: 'HelveticaNeue','Helvetica Neue','Helvetica','Arial','sans-serif';
+    font-family: 'HelveticaNeue','Helvetica Neue', Helvetica, Arial, Verdana, Tahoma, sans-serif;
     color: #585858;
     border-bottom: 1px solid #ececec;
 }
