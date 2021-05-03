@@ -151,9 +151,9 @@ Shopify.formatMoney = function(cents, format) {
 
     number = (number/100.0).toFixed(precision);
 
-    var parts   = number.split('.');
-        dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands);
-        cents   = parts[1] ? (decimal + parts[1]) : '';
+    var parts = number.split('.');
+    var dollars = parts[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1' + thousands);
+    cents = parts[1] ? (decimal + parts[1]) : '';
 
     return dollars + cents;
   }
