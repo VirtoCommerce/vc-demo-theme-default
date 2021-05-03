@@ -1,13 +1,13 @@
 <div ng-controller="orderController">
     <h4>{{ 'customer.order.title' | t: order.number }}</h4>
-    <table class="full">
+    <table class="full" aria-hidden="true">
         <thead>
             <tr>
-                <th>{{ 'customer.order.product' | t }}</th>
-                <th>{{ 'customer.order.sku' | t }}</th>
-                <th>{{ 'customer.order.price' | t }}</th>
-                <th class="text-center">{{ 'customer.order.quantity' | t }}</th>
-                <th class="text-right">{{ 'customer.order.total' | t }}</th>
+                <th id="order_product">{{ 'customer.order.product' | t }}</th>
+                <th id="order_sku">{{ 'customer.order.sku' | t }}</th>
+                <th id="order_price">{{ 'customer.order.price' | t }}</th>
+                <th id="order_quantity" class="text-center">{{ 'customer.order.quantity' | t }}</th>
+                <th id="order_total" class="text-right">{{ 'customer.order.total' | t }}</th>
             </tr>
         </thead>
         <tbody>
