@@ -59,9 +59,8 @@ angular.module('storefront.account')
 
                     if ($ctrl.amountToPay > 0) {
                         $ctrl.billingAddressEqualsShipping = true;
-                        loadPromise = orderApi.getNewPaymentData({ number: $ctrl.orderNumber }, function (result) {
-                            //$ctrl.order = result.order;
-                            configurePayment(result.paymentMethods, result.payment);
+                        loadPromise = orderApi.getNewPaymentData({ number: $ctrl.orderNumber }, function (paymentDataResult) {
+                            configurePayment(paymentDataResult.paymentMethods, paymentDataResult.payment);
                         }).$promise;
                     }
                 });
