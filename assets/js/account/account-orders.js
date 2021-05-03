@@ -189,14 +189,14 @@ angular.module('storefront.account')
 
         function outerRedirect(absUrl) {
             $window.location.href = absUrl;
-        };
+        }
     }]
 })
 
 .factory('orderHelper', function () {
     var retVal = {
         getNewPayment: function (order, paymentMethods, newPaymentTemplate) {
-            var retVal;
+            var result;
             var paidPayments = _.filter(order.inPayments, function (x) {
                 return x.status === 'Paid';
             });
@@ -210,14 +210,14 @@ angular.module('storefront.account')
             });
             var pendingPayment = _.last(_.sortBy(pendingPayments, 'createdDate'));
             if (pendingPayment && (!paymentMethods || _.findWhere(paymentMethods, { code: pendingPayment.gatewayCode }))) {
-                retVal = pendingPayment;
+                result = pendingPayment;
             } else {
                 newPaymentTemplate = newPaymentTemplate || { sum: {} };
                 newPaymentTemplate.sum.amount = amountToPay;
-                retVal = newPaymentTemplate;
+                result = newPaymentTemplate;
             }
 
-            return retVal;
+            return result;
         }
     };
 
