@@ -339,8 +339,9 @@ select {
     color: #737373;
     font-size: 14px;
     padding: 0;
+    border-right: 0 !important;
+    border-left: 0 !important;
 }
-
 
 .vc-product-table .product-img {
     height: 64px;
@@ -960,11 +961,6 @@ select {
 .list-table {
     border-collapse: separate !important;
     /*border-spacing: 10pt !important;*/
-}
-
-.vc-product-table td {
-    border-right: 0 !important;
-    border-left: 0 !important;
 }
 
 .vc-product-table tr {
