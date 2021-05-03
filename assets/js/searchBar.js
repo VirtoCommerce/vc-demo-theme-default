@@ -29,8 +29,8 @@ storefrontApp.controller('searchBarController', ['$scope', '$timeout', '$window'
                     searchCriteria.pageSize = $window.suggestionsLimit - categories.length;
                     $scope.categorySuggestions = categories;
                 }
-                catalogService.search(searchCriteria).then(function (response) {
-                    var products = response.data.products;
+                catalogService.search(searchCriteria).then(function (searchResponse) {
+                    var products = searchResponse.data.products;
                     $scope.productSuggestions = products;
                     $scope.searching = false;
                 });
