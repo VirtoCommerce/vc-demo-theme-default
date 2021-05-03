@@ -212,13 +212,13 @@
                     <img id="productPhotoImg" fallback-src="{% raw %}{{selectedVariation.primaryImage.url}}{% endraw %}" ng-src="{% raw %}{{selectedVariation.primaryImage.url|imgurl:'348x348'}}{% endraw %}" alt="{% raw %}{{ selectedVariation.primaryImage.alt }}{% endraw %}" ng-if="selectedVariation.primaryImage">
 
                     <div class="no-product-image" ng-if="!selectedVariation.primaryImage">
-                        <img src="{{ 'images/no-image.svg' | asset_url }}" />
+                        <img src="{{ 'images/no-image.svg' | asset_url }}" alt="no image" />
                     </div>
                 </div>
                 <ul ng-if="selectedVariation.images.length > 0" class="product-photo-thumbs grid-uniform" id="productThumbs">
                     <li class="grid-item medium--down-one-quarter large--one-quarter" ng-repeat="image in selectedVariation.images">
                         <a href="" ng-click="selectedVariation.primaryImage = image" class="product-photo-thumb">
-                            <img fallback-src="{% raw %}{{image.url}}{% endraw %}" ng-src="{% raw %}{{image.url|imgurl:'64x64'}}{% endraw %}" alt="{% raw %}{{ image.alt }}{% endraw %}">
+                            <img fallback-src="{% raw %}{{image.url}}{% endraw %}" ng-src="{% raw %}{{image.url|imgurl:'64x64'}}{% endraw %}" alt="{% raw %}{{ image.alt }}{% endraw %}" />
                         </a>
                     </li>
                 </ul>
