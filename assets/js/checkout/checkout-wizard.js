@@ -11,7 +11,7 @@ storefrontApp.component('vcCheckoutWizard', {
 	controller: ['$scope', function ($scope) {
 		var ctrl = this;
 		ctrl.wizard = ctrl;
-		ctrl.steps = [];	
+		ctrl.steps = [];
 		ctrl.goToStep = function (step) {
 			if (angular.isString(step))
 			{
@@ -52,7 +52,7 @@ storefrontApp.component('vcCheckoutWizard', {
 					else {
 						ctrl.goToStep(ctrl.currentStep.nextStep);
 					}
-				}			
+				}
 			}
 		};
 
@@ -66,19 +66,19 @@ storefrontApp.component('vcCheckoutWizard', {
 				steps[i].prevStep = undefined;
 				steps[i].nextStep = undefined;
 				if (nextStep && !steps[i].disabled) {
-					nextStep.prevStep = steps[i]
-				};				
+					nextStep.prevStep = steps[i];
+				}
 				if (!steps[i].disabled) {
 					steps[i].nextStep = nextStep;
 					nextStep = steps[i];
 				}
-			}		
-		};
-		
+			}
+		}
+
 		ctrl.addStep = function (step) {
 			ctrl.steps.push(step);
 			$scope.$watch(function () { return step.disabled; }, function () {
-				rebuildStepsLinkedList(ctrl.steps);			
+				rebuildStepsLinkedList(ctrl.steps);
 			});
 			rebuildStepsLinkedList(ctrl.steps);
 			if(!ctrl.currentStep)
