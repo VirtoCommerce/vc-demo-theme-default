@@ -46,7 +46,7 @@
             </span>
             <div  class="ajax-informer text-center" ng-class="{ 'fade': $ctrl.accountLists.productAdded }">{{ 'wishlist.general.added_to_cart' | t}}</div>
 
-            <table class="vc-product-table list-table" aria-hidden="true">
+            <table class="vc-product-table list-table" role="presentation">
                 <tr  style="height:120px;" class="product-row" ng-repeat="lineItem in $ctrl.accountLists.selectedList.items">
                     <td class="product-img">
                         <div class="img-inner">
