@@ -41,7 +41,7 @@
         </div>
         <div class="grid" ng-if="displayForStatuses(['Processing', 'Proposal sent', 'Ordered', 'Rejected', 'Canceled'])">
             <div class="grid-item medium-down--one-whole">
-                <table aria-hidden="true">
+                <table aria-label="Quote request">
                     <tr>
                         <td><strong>{{ 'quotes.request.email' | t }}</strong></td>
                         <td ng-bind="quoteRequest.email"></td>
