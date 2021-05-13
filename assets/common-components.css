@@ -339,8 +339,9 @@ select {
     color: #737373;
     font-size: 14px;
     padding: 0;
+    border-right: 0 !important;
+    border-left: 0 !important;
 }
-
 
 .vc-product-table .product-img {
     height: 64px;
@@ -528,13 +529,11 @@ select {
     width: 16px;
     height: 16px;
     top: 15px;
-}
-
-.icon--question {
     background-image: url('question-dark.svg');
     background-image: url('question-dark.svg'), none;
 }
-/*.main 
+
+/*.main
 .sidebar .icon--question {
     background-image: url('question-dark.svg');
     background-image: url('question-dark.svg'), none
@@ -917,7 +916,7 @@ select {
     margin-bottom: 0px;
     line-height: 1.6;
     z-index: 999;
-    font-family: 'HelveticaNeue','Helvetica Neue','Helvetica','Arial','sans-serif';
+    font-family: 'HelveticaNeue','Helvetica Neue', Helvetica, Arial, Verdana, Tahoma, sans-serif;
     color: #585858;
     border-bottom: 1px solid #ececec;
 }
@@ -961,12 +960,8 @@ select {
 
 .list-table {
     border-collapse: separate !important;
-    /*border-spacing: 10pt !important;*/
-}
-
-.vc-product-table td {
-    border-right: 0 !important;
-    border-left: 0 !important;
+    position: relative;
+    top: -40px;
 }
 
 .vc-product-table tr {
@@ -1045,11 +1040,6 @@ select {
     color: #969696;
     font-size: 12px;
     text-decoration: line-through;
-}
-
-.list-table {
-    position: relative;
-    top: -40px;
 }
 
 .has-error {

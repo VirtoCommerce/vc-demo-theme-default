@@ -1,11 +1,11 @@
 <div class="one-half">
     <h4>{{ 'customer.quotes.title' | t }}</h4>
-    <table class="full" ng-if="$ctrl.entries.length">
+    <table class="full" ng-if="$ctrl.entries.length" aria-label="Quotes">
         <thead>
             <tr>
-                <th>{{ 'customer.quotes.quote_number' | t }}</th>
-                <th>{{ 'customer.quotes.date' | t }}</th>
-                <th>{{ 'customer.quotes.status' | t }}</th>
+                <th scope="col">{{ 'customer.quotes.quote_number' | t }}</th>
+                <th scope="col">{{ 'customer.quotes.date' | t }}</th>
+                <th scope="col">{{ 'customer.quotes.status' | t }}</th>
             </tr>
         </thead>
         <tbody>

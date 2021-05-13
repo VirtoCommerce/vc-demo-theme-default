@@ -78,6 +78,8 @@
 .nav-tabs.nav-justified > li > a {
   margin-bottom: 5px;
   text-align: center;
+  margin-right: 0;
+  border-radius: 4px;
 }
 .nav-tabs.nav-justified > .dropdown .dropdown-menu {
   top: auto;
@@ -91,10 +93,6 @@
   .nav-tabs.nav-justified > li > a {
     margin-bottom: 0;
   }
-}
-.nav-tabs.nav-justified > li > a {
-  margin-right: 0;
-  border-radius: 4px;
 }
 .nav-tabs.nav-justified > .active > a,
 .nav-tabs.nav-justified > .active > a:hover,

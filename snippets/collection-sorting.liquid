@@ -2,7 +2,6 @@
   <label for="sortBy" class="small--hide">{{ 'collections.sorting.title' | t }}</label>
   <select name="sortBy" id="sortBy">
     <option value="priority-descending;name-ascending">{{ 'collections.sorting.featured' | t }}</option>
-    <!-- <option value="best-selling">{{ 'collections.sorting.best_selling' | t }}</option> -->
     <option value="name-ascending">{{ 'collections.sorting.az' | t }}</option>
     <option value="name-descending">{{ 'collections.sorting.za' | t }}</option>
     <option value="price_{{current_currency.code | string.downcase }}-ascending">{{ 'collections.sorting.price_ascending' | t }}</option>

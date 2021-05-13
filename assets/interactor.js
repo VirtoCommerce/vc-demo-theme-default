@@ -37,16 +37,16 @@ Interactor.prototype = {
     __init__: function (config) {
 
         var interactor = this;
-        
+
         // Argument Assignment          // Type Checks                                                                          // Default Values
-        interactor.interactions = typeof (config.interactions) == "boolean" ? config.interactions : true,
-        interactor.interactionElements = Array.isArray(config.interactionElements) === true ? config.interactionElements : ['interaction'],
-        interactor.interactionEvents = Array.isArray(config.interactionEvents) === true ? config.interactionEvents : ['mouseup', 'touchend'],     
-        interactor.endpoint = typeof (config.endpoint) == "string" ? config.endpoint : '/interactions',
-        interactor.async = typeof (config.async) == "boolean" ? config.async : true,
-        interactor.debug = typeof (config.debug) == "boolean" ? config.debug : true,
-        interactor.records = [],
-        interactor.session = {},
+        interactor.interactions = typeof (config.interactions) == "boolean" ? config.interactions : true;
+        interactor.interactionElements = Array.isArray(config.interactionElements) === true ? config.interactionElements : ['interaction'];
+        interactor.interactionEvents = Array.isArray(config.interactionEvents) === true ? config.interactionEvents : ['mouseup', 'touchend'];
+        interactor.endpoint = typeof (config.endpoint) == "string" ? config.endpoint : '/interactions';
+        interactor.async = typeof (config.async) == "boolean" ? config.async : true;
+        interactor.debug = typeof (config.debug) == "boolean" ? config.debug : true;
+        interactor.records = [];
+        interactor.session = {};
         interactor.loadTime = new Date();
 
         // Initialize Session

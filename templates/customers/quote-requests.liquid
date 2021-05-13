@@ -6,12 +6,12 @@
         <h4>{{ 'customer.quotes.title' | t }}</h4>
         {{ paginator = customer.quote_requests | paginate 5 }}
         {% if customer.quote_requests.size > 0 %}
-        <table class="full">
+        <table class="full" aria-label="Quote request">
             <thead>
                 <tr>
-                    <th>{{ 'customer.quotes.quote_number' | t }}</th>
-                    <th>{{ 'customer.quotes.date' | t }}</th>
-                    <th>{{ 'customer.quotes.status' | t }}</th>
+                    <th scope="col">{{ 'customer.quotes.quote_number' | t }}</th>
+                    <th scope="col">{{ 'customer.quotes.date' | t }}</th>
+                    <th scope="col">{{ 'customer.quotes.status' | t }}</th>
                 </tr>
             </thead>
             <tbody>

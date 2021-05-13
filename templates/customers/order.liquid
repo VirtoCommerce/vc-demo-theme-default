@@ -37,14 +37,14 @@
     </div>
     {% endif %}
 
-    <table class="full">
+    <table class="full" aria-label="Order">
       <thead>
         <tr>
-          <th>{{ 'customer.order.product' | t }}</th>
-          <th>{{ 'customer.order.sku' | t }}</th>
-          <th>{{ 'customer.order.price' | t }}</th>
-          <th class="text-center">{{ 'customer.order.quantity' | t }}</th>
-          <th class="text-right">{{ 'customer.order.total' | t }}</th>
+          <th scope="col">{{ 'customer.order.product' | t }}</th>
+          <th scope="col">{{ 'customer.order.sku' | t }}</th>
+          <th scope="col">{{ 'customer.order.price' | t }}</th>
+          <th class="text-center" scope="col">{{ 'customer.order.quantity' | t }}</th>
+          <th class="text-right" scope="col">{{ 'customer.order.total' | t }}</th>
         </tr>
       </thead>
       <tbody>
@@ -184,7 +184,7 @@
           <div class="payment_method" style="cursor: pointer; margin-bottom: 20px;">
               <input id="order_payment_method_{{ payment_method.handle }}" name="order[payment_method_id]" type="radio" value="{{ payment_method.handle }}" required="required" />
               <label for="order_payment_method_{{ payment_method.handle }}"></label>
-              <img src="{{ payment_method.icon_url }}" width="150" />
+              <img src="{{ payment_method.icon_url }}" width="150" alt="payment method icon" />
           </div>
           {% endfor %}
           <input class="btn" type="submit" title="Pay order" value="{{ 'customer.order.payment.pay_order' | t }} " />

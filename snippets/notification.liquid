@@ -5,7 +5,7 @@
     <strong>{{ 'notification.error_title' | t }}</strong>
     {{ 'notification.error_message' | t }}<br /><br />
     <a style="color: #a94442; cursor: pointer; font-weight: 700;" ng-click="toggleNotificationDetails()">
-        <i class="fa" ng-class="{ 'fa-angle-down': !storefrontNotification.detailsVisible, 'fa-angle-up': storefrontNotification.detailsVisible }"></i>
+        <i class="fa" ng-class="{ 'fa-angle-down': !storefrontNotification.detailsVisible, 'fa-angle-up': storefrontNotification.detailsVisible }" aria-hidden="true"></i>
         <span ng-if="!storefrontNotification.detailsVisible">{{ 'notification.show_error_details_link_text' | t }}</span>
         <span ng-if="storefrontNotification.detailsVisible">{{ 'notification.hide_error_details_link_text' | t }}</span>
     </a>

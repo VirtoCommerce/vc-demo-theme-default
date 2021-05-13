@@ -58,8 +58,8 @@ angular.module('storefront.account')
             require: {
                 accountLists: '^^vcAccountLists'
             },
-            bindings: { 
-                listName: '<' 
+            bindings: {
+                listName: '<'
             },
             controller: [
                 '$rootScope', 'listService', 'loadingIndicatorService', 'dialogService', function ($rootScope, listService, loader, dialogService) {
@@ -91,7 +91,7 @@ angular.module('storefront.account')
                                 $ctrl.accountLists.lists = response.data.results;
                                 $ctrl.pageSettings.totalItems = response.data.totalCount;
                                 if ($ctrl.selectedListName) {
-                                    $ctrl.accountLists.selectedList = _.find(response.data.results, function (element) { 
+                                    $ctrl.accountLists.selectedList = _.find(response.data.results, function (element) {
                                         return element.name == $ctrl.selectedListName;
                                     });
                                 } else {
@@ -135,7 +135,7 @@ angular.module('storefront.account')
                                 $rootScope.$broadcast('cartItemsChanged');
                             });
                         });
-                    }
+                    };
 
                     $ctrl.listSettings = function () {
                         loader.wrapLoading(function () {
@@ -154,13 +154,7 @@ angular.module('storefront.account')
                                 });
                             });
                         });
-
-
                     };
-
-                    function createList(listName, type) {
-                        return listService.createList(listName, type);
-                    }
                 }
             ]
         });

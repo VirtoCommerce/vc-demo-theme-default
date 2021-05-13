@@ -8,8 +8,8 @@
                 </div>
                 <button class="field__input-btn btn btn--default" type="button" ng-click="$ctrl.applyCoupon($ctrl.coupon)" ng-class="{ 'btn--loading': $ctrl.coupon.processing, 'btn--disabled': $ctrl.form.$invalid }" ng-disabled="$ctrl.form.$invalid || $ctrl.coupon.processing">
                     <span class="btn__content visually-hidden-on-mobile">{{ 'checkout.apply' | t }}</span>
-                    <i class="btn__content shown-on-mobile icon icon--arrow"></i>
-                    <i class="btn__spinner icon icon--button-spinner"></i>
+                    <i class="btn__content shown-on-mobile icon icon--arrow" aria-hidden="true"></i>
+                    <i class="btn__spinner icon icon--button-spinner" aria-hidden="true"></i>
                 </button>
             </div>
             <p class="field__message field__message--error" ng-if="!$ctrl.coupon.appliedSuccessfully">
@@ -24,8 +24,8 @@
                 </div>
                 <button class="field__input-btn btn btn--default" type="button" style="width:82px; padding:0; height:40px" ng-click="$ctrl.onRemoveCoupon({ coupon: coupon })" ng-class="{ 'btn--loading': coupon.processing }">
                     <span class="btn__content visually-hidden-on-mobile">{{ 'checkout.remove' | t }}</span>
-                    <i class="btn__content shown-on-mobile icon icon--arrow"></i>
-                    <i class="btn__spinner icon icon--button-spinner"></i>
+                    <i class="btn__content shown-on-mobile icon icon--arrow" aria-hidden="true"></i>
+                    <i class="btn__spinner icon icon--button-spinner" aria-hidden="true"></i>
                 </button>
             </div>
             <p class="field__message" ng-if="coupon.appliedSuccessfully">{{ 'checkout.coupon_applied_sucessfuly' | t }}</p>

@@ -39,7 +39,7 @@ angular.module(moduleName, ['credit-cards', 'angular.filter'])
                     else {
                         $scope.checkout.cart = cart;
                         $scope.checkout.coupons = cart.coupons || $scope.checkout.coupons;
-                       
+
                         if (cart.payments.length) {
                             $scope.checkout.payment = cart.payments[0];
                             $scope.checkout.paymentMethod.code = $scope.checkout.payment.paymentGatewayCode;
@@ -108,7 +108,7 @@ angular.module(moduleName, ['credit-cards', 'angular.filter'])
                 return cartService.getCountries().then(function(response) {
                     return response.data;
                 });
-            };
+            }
 
             $scope.getCountryRegions = function(country) {
                 return cartService.getCountryRegions(country.code3).then(function(response) {
@@ -160,7 +160,7 @@ angular.module(moduleName, ['credit-cards', 'angular.filter'])
                     else {
                         $scope.checkout.shipment.deliveryAddress.type = 'Shipping';
                     }
-                };
+                }
                 //Does not pass validation errors to API
                 shipment.validationErrors = undefined;
                 return wrapLoading(function() {
@@ -170,7 +170,7 @@ angular.module(moduleName, ['credit-cards', 'angular.filter'])
                         return cartService.addOrUpdateShipment(shipment);
                     }
                 });
-            };
+            }
 
             $scope.createOrder = function() {
                 updatePaymentWithoutReloadCart($scope.checkout.payment).then(function() {

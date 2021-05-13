@@ -2,7 +2,7 @@
     <ul class="slides">
         {% for slide in banner.Properties.imageLinks %}
             {% assign image_src = slide[0] %}
-            <li><img src="{{ image_src }}" /></li>
+            <li><img src="{{ image_src }}" alt="banner slide" /></li>
         {% endfor %}
     </ul>
 </div>
