@@ -1,4 +1,4 @@
-# v1.1.3.3
+# v1.4.vc-demo-theme
 name: Theme CI
 on:
   workflow_dispatch:
@@ -67,6 +67,7 @@ jobs:
 
     - name: Build
       if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev' || github.event_name == 'workflow_dispatch' || github.event_name == 'pull_request' }}
+      id: build
       uses: VirtoCommerce/vc-github-actions/build-theme@master
       with:
         versionSuffix:  ${{ env.VERSION_SUFFIX }}
@@ -75,6 +76,9 @@ jobs:
       if: ${{ github.ref == 'refs/heads/master' || github.ref == 'refs/heads/dev' || github.event_name == 'pull_request' || (github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/master')}}
       id: publish
       uses: VirtoCommerce/vc-github-actions/publish-theme@master
+      with:
+        artifactPath: ${{ steps.build.outputs.artifactPath }}
+        artifactName: ${{ steps.build.outputs.artifactName }}
 
     - name: Add link to PR
       if: ${{ github.event_name == 'pull_request' }}
@@ -99,14 +103,14 @@ jobs:
       uses: actions/upload-release-asset@v1
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{ steps.publish.outputs.artifactPath }}
-        asset_name: ${{ steps.publish.outputs.artifactName }}
+        asset_path: ${{ steps.build.outputs.artifactPath }}
+        asset_name: ${{ steps.build.outputs.artifactName }}
         asset_content_type: application/zip
 
     - name: Invoke Theme deployment workflow
       if: ${{ github.ref == 'refs/heads/dev' || (github.event_name == 'workflow_dispatch' && github.ref != 'refs/heads/master')}}
       uses: benc-uk/workflow-dispatch@v1
       with:
-        workflow: Theme deployment
+        workflow: VC deployment
         token: ${{ secrets.REPO_TOKEN }}
-        inputs: '{ "blobUrl": "${{ steps.publish.outputs.blobUrl }}", "artifactVersion": "${{ steps.image.outputs.fullVersion }}", "key": "ELECTRONICS_THEME_URL" }'
+        inputs: '{ "artifactUrl": "${{ steps.publish.outputs.blobUrl }}" }'
